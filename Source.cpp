@@ -57,15 +57,15 @@ int main() {
     cout << "\nИнформация о квартирах:\n\n";
 
     for (int i = 0; i < numApart; i++) {
-        Apartment* apartmentArr = home.getApartmentArray();
-        cout << "Квартира " << apartmentArr[i].getNumber() << " на этаже " << apartmentArr[i].getFloor() << ":\n";
+        Apartment* apartment = home.getApartmentArray();
+        cout << "Квартира " << apartment[i].getNumber() << " на этаже " << apartment[i].getFloor() << ":\n";
 
-        Human* residents = apartmentArr[i].getHuman();
-        for (int j = 0; j < apartmentArr[i].getSizeArr(); j++) {
+        Human* people = apartment[i].getHuman();
+        for (int j = 0; j < apartment[i].getSizeArr(); j++) {
             cout << "\tЖитель " << j + 1 << ":\n";
-            cout << "\tФИО: " << residents[j].getFullName() << "\n";
-            cout << "\tТелефон: " << residents[j].getPhone() << "\n";
-            cout << "\tГод рождения: " << residents[j].getYear() << "\n";
+            cout << "\tФИО: " << people[j].getFullName() << "\n";
+            cout << "\tТелефон: " << people[j].getPhone() << "\n";
+            cout << "\tГод рождения: " << people[j].getYear() << "\n";
         }
     }
 
