@@ -48,37 +48,12 @@ public:
 		strcpy_s(Phone, strlen(human_p.Phone) + 1, human_p.Phone);
 	}
 
-	void setFullName(const char* fullName_p) {
-		if (fullName)
-			delete[]fullName;
-
-		fullName = new char[strlen(fullName_p) + 1];
-		strcpy_s(fullName, strlen(fullName_p) + 1, fullName_p);
-	}
-
-	void setYear(int year_p) {
-		year = year_p;
-	}
-
-	void setPhone(const char* Phone_p) {
-		if (Phone)
-			delete[]Phone;
-
-		Phone = new char[strlen(Phone_p) + 1];
-		strcpy_s(Phone, strlen(Phone_p) + 1, Phone_p);
-	}
-
-	int getYear()const {
-		return year;
-	}
-
-	const char* getFullName()const {
-		return fullName;
-	}
-
-	const char* getPhone()const {
-		return Phone;
-	}
+	void setFullName(const char* fullName_p);
+	void setYear(int year_p);
+	void setPhone(const char* Phone_p);
+	int getYear()const;
+	const char* getFullName()const;
+	const char* getPhone()const;
 
 	~Human() {
 		delete[]Phone;

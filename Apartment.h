@@ -10,9 +10,9 @@ class Apartment
 	int floor;
 
 public:
-	Apartment() :Apartment(0, 0, 1) {}
-	explicit Apartment(int number_p) :Apartment(number_p, 0, 1) {}
-	explicit Apartment(int number_p, int floor_p) : Apartment(number_p, floor_p, 1) {}
+	Apartment() :Apartment(0, 0, 2) {}
+	explicit Apartment(int number_p) :Apartment(number_p, 0, 2) {}
+	explicit Apartment(int number_p, int floor_p) : Apartment(number_p, floor_p, 2) {}
 	explicit Apartment(int number_p, int floor_p, int sizeArr_p) {
 		if (sizeArr_p > 0) {
 			sizeArr = sizeArr_p;

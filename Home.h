@@ -1,28 +1,22 @@
 #pragma once
 #include "Apartment.h"
+#include "Human.h"
 
 class Home
 {
 	Apartment* apartmentArr;
-	int sizeApart;
 	int numApart;
 	int numFloor;
 
 public:
-	Home() :Home(1, 0, 0) {}
-	explicit Home(int size):Home(size,0,0){}
-	explicit Home(int size, int numApart_p) :Home(size, numApart_p, 0) {}
-	explicit Home(int size, int numApart_p, int numFloor_p) {
-		if (size > 0)
-			exit(367); // Ошибка: введен неверный размер массива
-
-		sizeApart = size;
-		apartmentArr = new Apartment[sizeApart];
-
-		if(numApart_p < 0)
+	Home() :Home(0, 0) {}
+	explicit Home(int numApart_p) :Home(numApart_p, 0) {}
+	explicit Home(int numApart_p, int numFloor_p) {
+		if(numApart_p < 0 && numFloor_p < 0)
 			exit(368); //Ошибка: введен неверный размер данных
 		
 		numApart = numApart_p;
+		apartmentArr = new Apartment[numApart];
 
 		if (numFloor_p < 0)
 			exit(368); //Ошибка: введен неверный размер данных
@@ -31,20 +25,21 @@ public:
 	}
 
 	Home(Home& obj) {
-		sizeApart = obj.sizeApart;
 		numApart = obj.numApart;
 		numFloor = obj.numFloor;
 		
-		apartmentArr = new Apartment[sizeApart];
+		apartmentArr = new Apartment[numApart];
 
-		for (int i = 0;i < sizeApart;i++) {
+		for (int i = 0;i < numApart;i++) {
 			apartmentArr[i] = obj.apartmentArr[i];
 		}
 	}
 
-	void setSizeApart();
-	void setNumApart();
-	void setNumFloor();
+	void setArrApart(int numApart_p, int apartNumber_p, int floor_p, int i);
+	void setNumFloor(int numFloor_p);
 
+	~Home() {
+		delete[]apartmentArr;
+	}
 };
 
