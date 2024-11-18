@@ -32,7 +32,7 @@ public:
 			strcpy_s(Phone, strlen(Phone_p) + 1, Phone_p);
 		}
 	}
-	Human(Human& human_p) {
+	Human(const Human& human_p) {
 		year = human_p.year;
 
 		if (fullName) 

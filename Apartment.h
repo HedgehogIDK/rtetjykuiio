@@ -35,7 +35,7 @@ public:
 		}
 	}
 
-	Apartment(Apartment& Apart) {
+	Apartment(const Apartment& Apart) {
 		floor = Apart.floor;
 		number = Apart.number;
 		sizeArr = Apart.sizeArr;

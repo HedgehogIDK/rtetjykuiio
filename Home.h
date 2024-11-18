@@ -24,7 +24,7 @@ public:
 		numFloor = numFloor_p;
 	}
 
-	Home(Home& obj) {
+	Home(const Home& obj) {
 		numApart = obj.numApart;
 		numFloor = obj.numFloor;
 		
