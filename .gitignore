@@ -1,4 +1,5 @@
 *.vsidx
 Browse.VC.opendb
-
+Browse.VC.db
+*.ipc
 *.vs

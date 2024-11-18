@@ -40,6 +40,8 @@ public:
 		number = Apart.number;
 		sizeArr = Apart.sizeArr;
 
+		humanArr = new Human[sizeArr];
+
 		for (int i = 0;i < sizeArr;i++) {
 			humanArr[i] = Apart.humanArr[i];
 		}
