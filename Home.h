@@ -2,44 +2,45 @@
 #include "Apartment.h"
 #include "Human.h"
 
-class Home
-{
-	Apartment* apartmentArr;
-	int numApart;
-	int numFloor;
+class Home {
+    Apartment* apartmentArr;
+    int numApart;
+    int numFloor;
 
 public:
-	Home() :Home(0, 0) {}
-	explicit Home(int numApart_p) :Home(numApart_p, 0) {}
-	explicit Home(int numApart_p, int numFloor_p) {
-		if(numApart_p < 0 && numFloor_p < 0)
-			exit(368); //Ошибка: введен неверный размер данных
-		
-		numApart = numApart_p;
-		apartmentArr = new Apartment[numApart];
+    Home() :Home(1, 1) {}
+    explicit Home(int numApart_p) :Home(numApart_p, 1) {}
+    explicit Home(int numApart_p, int numFloor_p) {
+        if (numApart_p < 1 || numFloor_p < 1)
+            exit(368); // Ошибка: неверные размеры данных
 
-		if (numFloor_p < 0)
-			exit(368); //Ошибка: введен неверный размер данных
+        numApart = numApart_p;
+        apartmentArr = new Apartment[numApart];
+        numFloor = numFloor_p;
+    }
+    // Используем побитовое копирование
+    Home(const Home& obj) {
+        *this = obj; 
+    }
+    // Побитовое копирование
+    Home& operator=(const Home& obj) {
+        if (this != &obj) {
+            delete[] apartmentArr;
 
-		numFloor = numFloor_p;
-	}
+            numApart = obj.numApart;
+            numFloor = obj.numFloor;
+            apartmentArr = obj.apartmentArr; 
+        }
+        return *this;
+    }
 
-	Home(const Home& obj) {
-		numApart = obj.numApart;
-		numFloor = obj.numFloor;
-		
-		apartmentArr = new Apartment[numApart];
+    void setArrApart(int numApart_p, int apartNumber_p, int floor_p, int i);
+    void setNumFloor(int numFloor_p);
+    Apartment* getApartmentArray() const;
 
-		for (int i = 0;i < numApart;i++) {
-			apartmentArr[i] = obj.apartmentArr[i];
-		}
-	}
 
-	void setArrApart(int numApart_p, int apartNumber_p, int floor_p, int i);
-	void setNumFloor(int numFloor_p);
-
-	~Home() {
-		delete[]apartmentArr;
-	}
+    ~Home() {
+        delete[] apartmentArr;
+    }
 };
 

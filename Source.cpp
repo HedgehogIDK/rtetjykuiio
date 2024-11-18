@@ -6,27 +6,68 @@
 using namespace std;
 
 int main() {
-	setlocale(LC_ALL, "RUS");
+    setlocale(LC_ALL, "RUS");
 
-	int numApart, numFloor, floor, apart;
-	Home home;
+    int numApart, numFloor, floor, apart;
+    Home home;
 
-	cout << "Введите кол - во квартир: ";
-	cin >> numApart;
+    do {
+        // Ввод количества квартир
+        cout << "Введите количество квартир (должно быть больше 0): ";
+        cin >> numApart;
 
-	cout << "\nВведите кол - во этажей: ";
-	cin >> numFloor;
+        if (numApart <= 0) {
+            cout << "Ошибка: количество квартир должно быть больше 0\n";
+        }
+        // Ввод количества этажей
+        cout << "\nВведите количество этажей (должно быть больше 0): ";
+        cin >> numFloor;
 
-	home.setNumFloor(numFloor);
+        if (numFloor <= 0) {
+            cout << "Ошибка: количество этажей должно быть больше 0\n";
+        }
+    } while (numApart <= 0 && numFloor <= 0);
 
-	for (int i = 0; i < numApart;i++) {
-		cout << "\nВведите этаж: ";
-		cin >> floor;
-		cout << "\nВведите номер квартиры: ";
-		cin >> apart;
+    // Установка количества этажей в доме
+    home.setNumFloor(numFloor);
 
-		home.setArrApart(numApart, apart, floor, i);
-	}
+    // Ввод данных для каждой квартиры
+    for (int i = 0; i < numApart; i++) {
+        do {
+            cout << "\nВведите этаж (от 1 до " << numFloor << "): ";
+            cin >> floor;
 
-	return 0;
+            if (floor < 1 || floor > numFloor) {
+                cout << "Ошибка: этаж должен быть от 1 до " << numFloor << "\n";
+            }
+
+            cout << "Введите номер квартиры (положительное число): ";
+            cin >> apart;
+
+            if (apart <= 0) {
+                cout << "Ошибка: номер квартиры должен быть положительным числом\n";
+            }
+
+        } while (floor < 1 || floor > numFloor && apart <= 0);
+
+        // Установка данных квартиры
+        home.setArrApart(numApart, apart, floor, i);
+    }
+
+    cout << "\nИнформация о квартирах:\n\n";
+
+    for (int i = 0; i < numApart; i++) {
+        Apartment* apartmentArr = home.getApartmentArray();
+        cout << "Квартира " << apartmentArr[i].getNumber() << " на этаже " << apartmentArr[i].getFloor() << ":\n";
+
+        Human* residents = apartmentArr[i].getHuman();
+        for (int j = 0; j < apartmentArr[i].getSizeArr(); j++) {
+            cout << "\tЖитель " << j + 1 << ":\n";
+            cout << "\tФИО: " << residents[j].getFullName() << "\n";
+            cout << "\tТелефон: " << residents[j].getPhone() << "\n";
+            cout << "\tГод рождения: " << residents[j].getYear() << "\n";
+        }
+    }
+
+    return 0;
 }

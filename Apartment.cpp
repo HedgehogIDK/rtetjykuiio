@@ -1,7 +1,7 @@
 #include "Apartment.h"
 
 void Apartment::setHuman() {
-	cout << "\n¬ведите размер: ";
+	cout << "\n¬ведите размер квартиры: ";
 	cin >> sizeArr;
 
 	char bufferStr[SIZE];
@@ -42,4 +42,7 @@ int Apartment::getFloor() const{
 
 int Apartment::getNumber() const{
 	return number;
+}
+int Apartment::getSizeArr() const {
+	return sizeArr;
 }
