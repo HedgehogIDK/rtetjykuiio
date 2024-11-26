@@ -10,19 +10,19 @@ class Home {
 public:
     Home() :Home(1, 1) {}
     explicit Home(int numApart_p) :Home(numApart_p, 1) {}
-    explicit Home(int numApart_p, int numFloor_p) {
+    Home(int numApart_p, int numFloor_p) {
         if (numApart_p < 1 || numFloor_p < 1)
-            exit(368); // Îøèáêà: íåâåðíûå ðàçìåðû äàííûõ
+            exit(368); // ÃŽÃ¸Ã¨Ã¡ÃªÃ : Ã­Ã¥Ã¢Ã¥Ã°Ã­Ã»Ã¥ Ã°Ã Ã§Ã¬Ã¥Ã°Ã» Ã¤Ã Ã­Ã­Ã»Ãµ
 
         numApart = numApart_p;
         apartmentArr = new Apartment[numApart];
         numFloor = numFloor_p;
     }
-    // Èñïîëüçóåì ïîáèòîâîå êîïèðîâàíèå
+    // ÃˆÃ±Ã¯Ã®Ã«Ã¼Ã§Ã³Ã¥Ã¬ Ã¯Ã®Ã¡Ã¨Ã²Ã®Ã¢Ã®Ã¥ ÃªÃ®Ã¯Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¥
     Home(const Home& obj) {
         *this = obj; 
     }
-    // Ïîáèòîâîå êîïèðîâàíèå
+    // ÃÃ®Ã¡Ã¨Ã²Ã®Ã¢Ã®Ã¥ ÃªÃ®Ã¯Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¥
     Home& operator=(const Home& obj) {
         if (this != &obj) {
             delete[] apartmentArr;
