@@ -11,35 +11,35 @@ class Apartment {
 public:
     Apartment() :Apartment(0, 0, 2) {}
     explicit Apartment(int number_p) :Apartment(number_p, 0, 2) {}
-    explicit Apartment(int number_p, int floor_p) : Apartment(number_p, floor_p, 2) {}
-    explicit Apartment(int number_p, int floor_p, int sizeArr_p) {
+    Apartment(int number_p, int floor_p) : Apartment(number_p, floor_p, 2) {}
+    Apartment(int number_p, int floor_p, int sizeArr_p) {
         if (sizeArr_p > 0) {
             sizeArr = sizeArr_p;
             humanArr = new Human[sizeArr];
         }
         else {
-            exit(367); // Ошибка: неверный размер массива
+            exit(367); // ГЋГёГЁГЎГЄГ : Г­ГҐГўГҐГ°Г­Г»Г© Г°Г Г§Г¬ГҐГ° Г¬Г Г±Г±ГЁГўГ 
         }
 
         if (number_p > -1) {
             number = number_p;
         }
         else {
-            exit(368); // Ошибка: неверные данные
+            exit(368); // ГЋГёГЁГЎГЄГ : Г­ГҐГўГҐГ°Г­Г»ГҐ Г¤Г Г­Г­Г»ГҐ
         }
 
         if (floor_p > -1) {
             floor = floor_p;
         }
         else {
-            exit(368); // Ошибка: неверные данные
+            exit(368); // ГЋГёГЁГЎГЄГ : Г­ГҐГўГҐГ°Г­Г»ГҐ Г¤Г Г­Г­Г»ГҐ
         }
     }
-    // Используем побитовое копирование
+    // Г€Г±ГЇГ®Г«ГјГ§ГіГҐГ¬ ГЇГ®ГЎГЁГІГ®ГўГ®ГҐ ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГҐ
     Apartment(const Apartment& Apart) {
         *this = Apart; 
     }
-    // Побитовое копирование
+    // ГЏГ®ГЎГЁГІГ®ГўГ®ГҐ ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГҐ
     Apartment& operator=(const Apartment& Apart) {
         if (this != &Apart) {
             delete[] humanArr;
