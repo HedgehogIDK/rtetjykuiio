@@ -11,8 +11,8 @@ class Human
 public:
 	Human() :Human(nullptr, nullptr, 0) {}
 	explicit Human(const char* fullName_p) :Human(fullName_p, nullptr, 0) {}
-	explicit Human(const char* fullName_p, const char* Phone_p):Human(fullName_p, Phone_p, 0) {}
-	explicit Human(const char* fullName_p, const char* Phone_p, int year_p) :year{ year_p } {
+ Human(const char* fullName_p, const char* Phone_p):Human(fullName_p, Phone_p, 0) {}
+	Human(const char* fullName_p, const char* Phone_p, int year_p) :year{ year_p } {
 		if (fullName_p == nullptr) {
 			fullName = nullptr;
 		}
