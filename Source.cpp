@@ -8,7 +8,7 @@ using namespace std;
 int main() {
     setlocale(LC_ALL, "RUS");
 
-    int numApart, numFloor, floor, apart;
+    int numApart, numFloor, floor, apart, sizeArr;
     Home home;
 
     do {
@@ -48,19 +48,30 @@ int main() {
                 cout << "Ошибка: номер квартиры должен быть положительным числом\n";
             }
 
-        } while (floor < 1 || floor > numFloor && apart <= 0);
+            cout << "Введите размер квартир (положительное число): ";
+            cin >> sizeArr;
+
+            if (sizeArr <= 0) {
+                cout << "Ошибка: размер квартиры должен быть положительным числом\n";
+            }
+
+        } while (floor < 1 || floor > numFloor && apart <= 0 && sizeArr <= 0);
+
+        
 
         // Установка данных квартиры
-        home.setArrApart(numApart, apart, floor, i);
+        home.setArrApart(numApart, apart, floor, i, sizeArr);
     }
 
     cout << "\nИнформация о квартирах:\n\n";
 
     for (int i = 0; i < numApart; i++) {
         Apartment* apartment = home.getApartmentArray();
+
         cout << "Квартира " << apartment[i].getNumber() << " на этаже " << apartment[i].getFloor() << ":\n";
 
         Human* people = apartment[i].getHuman();
+
         for (int j = 0; j < apartment[i].getSizeArr(); j++) {
             cout << "\tЖитель " << j + 1 << ":\n";
             cout << "\tФИО: " << people[j].getFullName() << "\n";

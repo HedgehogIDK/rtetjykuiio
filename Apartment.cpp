@@ -1,13 +1,13 @@
 #include "Apartment.h"
 
 void Apartment::setHuman() {
-	cout << "\nВведите размер квартиры: ";
-	cin >> sizeArr;
-
 	char bufferStr[SIZE];
 	int buffer;
+	int size;
+	
+	size = getSizeArr();
 
-	for (int i = 0;i < sizeArr;i++) {
+	for (int i = 0;i < size;i++) {
 		cout << "\nВведите ФИО: ";
 		cin.ignore();
 		gets_s(bufferStr, SIZE);
@@ -22,6 +22,13 @@ void Apartment::setHuman() {
 		cin >> buffer;
 		humanArr[i].setYear(buffer);
 	}
+}
+void Apartment::setSizeArr(int sizeArr_p) {
+	sizeArr = sizeArr_p;
+}
+
+int Apartment::getSizeArr()const  {
+	return sizeArr;
 }
 
 void Apartment::setNumber(int number_p) {
@@ -42,7 +49,4 @@ int Apartment::getFloor() const{
 
 int Apartment::getNumber() const{
 	return number;
-}
-int Apartment::getSizeArr() const {
-	return sizeArr;
 }

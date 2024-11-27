@@ -13,11 +13,7 @@ void Human::setYear(int year_p) {
 }
 
 void Human::setPhone(const char* Phone_p) {
-	if (Phone)
-		delete[]Phone;
-
-	Phone = new char[strlen(Phone_p) + 1];
-	strcpy_s(Phone, strlen(Phone_p) + 1, Phone_p);
+	strcpy_s(Phone, SIZEPhone, Phone_p);
 }
 
 int Human::getYear()const {
