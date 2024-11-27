@@ -1,5 +1,5 @@
 *.vsidx
 Browse.VC.opendb
 *.exe
-*.vs
+**/.vs
 **/x64
