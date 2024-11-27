@@ -2,4 +2,4 @@
 Browse.VC.opendb
 *.exe
 *.vs
-x64
+**/x64
